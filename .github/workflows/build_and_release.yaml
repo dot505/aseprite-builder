@@ -51,7 +51,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
         matrix:
-          os: [ windows-latest, ubuntu-latest, macOS-latest ]
+          os: [ windows-latest ]
         fail-fast: false
     steps:
       - name: Install dependencies (Windows)
@@ -72,7 +72,7 @@ jobs:
             match: Skia-${{ runner.os }}-Release-x64(-libstdc\+\+)?.zip
       - name: Download Skia
         run: |
-          curl -o Skia-${{ runner.os }}-Release-x64.zip -L ${{ steps.skia-link.outputs.download-link }}
+          curl -o Skia-${{ runner.os }}-Release-x64.zip -L https://github.com/aseprite/skia/releases/download/m124-08a5439a6b/Skia-Windows-Release-x64.zip
           unzip Skia-${{ runner.os }}-Release-x64.zip -d skia
       - name: Download Aseprite release
         run: |
